@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#050103"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Header Card -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/crimson_card_bg"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CRIMSON JARVIS"
+                android:textColor="#FF1E42"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.12" />
+
+            <TextView
+                android:id="@+id/tvOwnerStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="OWNER: DARSHINI • VOICE LOCK: UNENROLLED"
+                android:textColor="#D49AA6"
+                android:textSize="12sp"
+                android:layout_marginTop="4dp" />
+        </LinearLayout>
+
+        <!-- Glowing Crimson Reactor Core -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/crimson_card_bg"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="22dp"
+            android:layout_marginBottom="16dp">
+
+            <Button
+                android:id="@+id/btnSpeakOrb"
+                android:layout_width="148dp"
+                android:layout_height="148dp"
+                android:background="@drawable/crimson_orb_bg"
+                android:text="🩸
+SPEAK"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvJarvisReply"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Say 'Hey Jarvis' anytime — even with screen off."
+                android:textColor="#FFD6DE"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp" />
+
+            <TextView
+                android:id="@+id/tvTranscript"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Awaiting command..."
+                android:textColor="#A87480"
+                android:textSize="13sp"
+                android:layout_marginTop="8dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="14dp">
+
+                <EditText
+                    android:id="@+id/etManualCmd"
+                    android:layout_width="0dp"
+                    android:layout_height="46dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/crimson_card_bg"
+                    android:hint="Type command: Call Amma / Open WhatsApp"
+                    android:paddingHorizontal="12dp"
+                    android:textColor="#FFEEF2"
+                    android:textColorHint="#8A5A65"
+                    android:textSize="14sp" />
+
+                <Button
+                    android:id="@+id/btnRunCmd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="46dp"
+                    android:layout_marginStart="8dp"
+                    android:backgroundTint="#C90E33"
+                    android:text="RUN"
+                    android:textColor="#FFFFFF" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- System Permissions & Voiceprint Setup Card -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/crimson_card_bg"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🔐 DARSHINI BIOMETRIC &amp; OS CONTROL"
+                android:textColor="#FF1E42"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="10dp" />
+
+            <Button
+                android:id="@+id/btnEnrollVoice"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:backgroundTint="#B80D2F"
+                android:text="🎙️ Enroll Darshini's Voice Lock (3s)"
+                android:textColor="#FFFFFF"
+                android:layout_marginBottom="8dp" />
+
+            <Button
+                android:id="@+id/btnToggleBackground"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:backgroundTint="#4A0816"
+                android:text="🟢 Start 24/7 Screen-Off Wake ('Hey Jarvis')"
+                android:textColor="#FFFFFF"
+                android:layout_marginBottom="8dp" />
+
+            <Button
+                android:id="@+id/btnAccessibility"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:backgroundTint="#32050F"
+                android:text="⚙️ Enable Screen Pilot (WhatsApp Auto-Chat)"
+                android:textColor="#FFD6DE"
+                android:layout_marginBottom="8dp" />
+
+            <Button
+                android:id="@+id/btnOverlayPerm"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:backgroundTint="#32050F"
+                android:text="🔓 Allow Lockscreen Wake &amp; Overlay"
+                android:textColor="#FFD6DE" />
+        </LinearLayout>
+
+        <!-- Optional Gemini AI Key Card -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/crimson_card_bg"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🧠 OPTIONAL GEMINI AI BRAIN KEY"
+                android:textColor="#FF1E42"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/etGeminiKey"
+                    android:layout_width="0dp"
+                    android:layout_height="44dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/crimson_card_bg"
+                    android:hint="Paste Gemini API key (optional)"
+                    android:inputType="textPassword"
+                    android:paddingHorizontal="12dp"
+                    android:textColor="#FFEEF2"
+                    android:textColorHint="#8A5A65"
+                    android:textSize="13sp" />
+
+                <Button
+                    android:id="@+id/btnSaveKey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="44dp"
+                    android:layout_marginStart="8dp"
+                    android:backgroundTint="#8F0A24"
+                    android:text="SAVE"
+                    android:textColor="#FFFFFF" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
