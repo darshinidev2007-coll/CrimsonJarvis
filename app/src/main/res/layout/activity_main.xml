@@ -13,10 +13,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/crimson_card_bg"
+            android:background="@drawable/crimson_card"
             android:orientation="vertical"
             android:padding="16dp"
-            android:layout_marginBottom="16dp">
+            android:layout_marginBottom="14dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -24,33 +24,32 @@
                 android:text="CRIMSON JARVIS"
                 android:textColor="#FF1E42"
                 android:textSize="22sp"
-                android:textStyle="bold"
-                android:letterSpacing="0.12" />
+                android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/tvOwnerStatus"
+                android:id="@+id/tvStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
                 android:text="OWNER: DARSHINI • VOICE LOCK: UNENROLLED"
                 android:textColor="#D49AA6"
-                android:textSize="12sp"
-                android:layout_marginTop="4dp" />
+                android:textSize="12sp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/crimson_card_bg"
+            android:background="@drawable/crimson_card"
             android:gravity="center"
             android:orientation="vertical"
-            android:padding="22dp"
-            android:layout_marginBottom="16dp">
+            android:padding="20dp"
+            android:layout_marginBottom="14dp">
 
             <Button
-                android:id="@+id/btnSpeakOrb"
-                android:layout_width="148dp"
-                android:layout_height="148dp"
-                android:background="@drawable/crimson_orb_bg"
+                android:id="@+id/btnSpeak"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:backgroundTint="#C90E33"
                 android:text="🩸
 SPEAK"
                 android:textColor="#FFFFFF"
@@ -58,46 +57,46 @@ SPEAK"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/tvJarvisReply"
+                android:id="@+id/tvReply"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
                 android:gravity="center"
-                android:text="Say 'Hey Jarvis' anytime — even with screen off."
+                android:text="Ready for your command, Darshini."
                 android:textColor="#FFD6DE"
                 android:textSize="15sp"
-                android:textStyle="bold"
-                android:layout_marginTop="16dp" />
+                android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/tvTranscript"
+                android:id="@+id/tvHeard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
                 android:gravity="center"
-                android:text="Awaiting command..."
+                android:text="No voice input yet."
                 android:textColor="#A87480"
-                android:textSize="13sp"
-                android:layout_marginTop="8dp" />
+                android:textSize="13sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="14dp">
+                android:layout_marginTop="14dp"
+                android:orientation="horizontal">
 
                 <EditText
-                    android:id="@+id/etManualCmd"
+                    android:id="@+id/etCommand"
                     android:layout_width="0dp"
                     android:layout_height="46dp"
                     android:layout_weight="1"
-                    android:background="@drawable/crimson_card_bg"
-                    android:hint="Type command: Call Amma / Open WhatsApp"
+                    android:background="@drawable/crimson_card"
+                    android:hint="Type: Call Amma / Open WhatsApp"
                     android:paddingHorizontal="12dp"
                     android:textColor="#FFEEF2"
                     android:textColorHint="#8A5A65"
                     android:textSize="14sp" />
 
                 <Button
-                    android:id="@+id/btnRunCmd"
+                    android:id="@+id/btnRun"
                     android:layout_width="wrap_content"
                     android:layout_height="46dp"
                     android:layout_marginStart="8dp"
@@ -110,22 +109,12 @@ SPEAK"
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/crimson_card_bg"
+            android:background="@drawable/crimson_card"
             android:orientation="vertical"
-            android:padding="16dp"
-            android:layout_marginBottom="16dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="🔐 DARSHINI BIOMETRIC &amp; OS CONTROL"
-                android:textColor="#FF1E42"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="10dp" />
+            android:padding="16dp">
 
             <Button
-                android:id="@+id/btnEnrollVoice"
+                android:id="@+id/btnEnroll"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:backgroundTint="#B80D2F"
@@ -134,11 +123,11 @@ SPEAK"
                 android:layout_marginBottom="8dp" />
 
             <Button
-                android:id="@+id/btnToggleBackground"
+                android:id="@+id/btnService"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:backgroundTint="#4A0816"
-                android:text="🟢 Start 24/7 Screen-Off Wake ('Hey Jarvis')"
+                android:text="🟢 Start 24/7 Wake Service ('Hey Jarvis')"
                 android:textColor="#FFFFFF"
                 android:layout_marginBottom="8dp" />
 
@@ -147,62 +136,17 @@ SPEAK"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:backgroundTint="#32050F"
-                android:text="⚙️ Enable Screen Pilot (WhatsApp Auto-Chat)"
+                android:text="⚙️ Enable Screen Pilot (Accessibility)"
                 android:textColor="#FFD6DE"
                 android:layout_marginBottom="8dp" />
 
             <Button
-                android:id="@+id/btnOverlayPerm"
+                android:id="@+id/btnOverlay"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:backgroundTint="#32050F"
-                android:text="🔓 Allow Lockscreen Wake &amp; Overlay"
+                android:text="🔓 Allow Display Over Other Apps"
                 android:textColor="#FFD6DE" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/crimson_card_bg"
-            android:orientation="vertical"
-            android:padding="16dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="🧠 OPTIONAL GEMINI AI BRAIN KEY"
-                android:textColor="#FF1E42"
-                android:textSize="13sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="8dp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <EditText
-                    android:id="@+id/etGeminiKey"
-                    android:layout_width="0dp"
-                    android:layout_height="44dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/crimson_card_bg"
-                    android:hint="Paste Gemini API key (optional)"
-                    android:inputType="textPassword"
-                    android:paddingHorizontal="12dp"
-                    android:textColor="#FFEEF2"
-                    android:textColorHint="#8A5A65"
-                    android:textSize="13sp" />
-
-                <Button
-                    android:id="@+id/btnSaveKey"
-                    android:layout_width="wrap_content"
-                    android:layout_height="44dp"
-                    android:layout_marginStart="8dp"
-                    android:backgroundTint="#8F0A24"
-                    android:text="SAVE"
-                    android:textColor="#FFFFFF" />
-            </LinearLayout>
         </LinearLayout>
 
     </LinearLayout>

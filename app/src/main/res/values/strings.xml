@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Crimson JARVIS</string>
-    <string name="accessibility_desc">Allows Crimson JARVIS to open WhatsApp chats, search contacts, send messages, and navigate apps hands-free for Darshini.</string>
+    <string name="accessibility_desc">Helps Crimson JARVIS open chats and navigate apps on screen.</string>
 </resources>

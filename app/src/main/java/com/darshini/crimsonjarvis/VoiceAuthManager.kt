@@ -10,35 +10,25 @@ import kotlinx.coroutines.withContext
 import kotlin.math.abs
 import kotlin.math.cos
 import kotlin.math.PI
+import kotlin.math.sin
 import kotlin.math.sqrt
 
 object VoiceAuthManager {
-    private const val PREFS = "crimson_jarvis_voice_prefs"
-    private const val KEY_VECTOR = "darshini_master_vector"
+    private const val PREFS = "crimson_jarvis_prefs"
+    private const val KEY_VEC = "voice_vector"
     private const val SAMPLE_RATE = 16000
-    private const val BINS = 24
+    private const val BINS = 20
 
     fun isEnrolled(context: Context): Boolean {
-        val sp = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
-        return !sp.getString(KEY_VECTOR, null).isNullOrBlank()
+        return !context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
+            .getString(KEY_VEC, null).isNullOrBlank()
     }
 
     fun saveVoiceprint(context: Context, vector: FloatArray) {
-        val encoded = vector.joinToString(",")
         context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
             .edit()
-            .putString(KEY_VECTOR, encoded)
+            .putString(KEY_VEC, vector.joinToString(","))
             .apply()
-    }
-
-    private fun getMasterVector(context: Context): FloatArray? {
-        val raw = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
-            .getString(KEY_VECTOR, null) ?: return null
-        return try {
-            raw.split(",").map { it.toFloat() }.toFloatArray()
-        } catch (_: Exception) {
-            null
-        }
     }
 
     @SuppressLint("MissingPermission")
@@ -70,31 +60,31 @@ object VoiceAuthManager {
 
             val frameSize = 512
             val buffer = ShortArray(frameSize)
-            val accum = DoubleArray(BINS) { 0.0 }
-            var voicedFrames = 0
+            val accum = DoubleArray(BINS)
+            var count = 0
 
             try {
                 recorder.startRecording()
-                val endTime = System.currentTimeMillis() + durationMs
-                while (System.currentTimeMillis() < endTime) {
+                val endAt = System.currentTimeMillis() + durationMs
+                while (System.currentTimeMillis() < endAt) {
                     val read = recorder.read(buffer, 0, frameSize)
                     if (read == frameSize) {
                         var energy = 0.0
                         for (s in buffer) energy += abs(s.toDouble())
-                        if (energy / frameSize > 220.0) {
+                        if (energy / frameSize > 200.0) {
                             for (b in 0 until BINS) {
-                                val freq = 120.0 + b * 155.0
-                                var real = 0.0
-                                var imag = 0.0
+                                val freq = 130.0 + b * 160.0
+                                var re = 0.0
+                                var im = 0.0
                                 for (n in 0 until frameSize) {
-                                    val angle = 2.0 * PI * freq * n / SAMPLE_RATE
-                                    val sample = buffer[n].toDouble() / 32768.0
-                                    real += sample * cos(angle)
-                                    imag += sample * kotlin.math.sin(angle)
+                                    val ang = 2.0 * PI * freq * n / SAMPLE_RATE
+                                    val x = buffer[n].toDouble() / 32768.0
+                                    re += x * cos(ang)
+                                    im += x * sin(ang)
                                 }
-                                accum[b] += sqrt(real * real + imag * imag)
+                                accum[b] += sqrt(re * re + im * im)
                             }
-                            voicedFrames++
+                            count++
                         }
                     }
                 }
@@ -104,30 +94,13 @@ object VoiceAuthManager {
                 recorder.release()
             }
 
-            if (voicedFrames < 3) return@withContext null
+            if (count < 2) return@withContext null
 
-            val rawVec = FloatArray(BINS) { i -> (accum[i] / voicedFrames).toFloat() }
+            val out = FloatArray(BINS) { i -> (accum[i] / count).toFloat() }
             var norm = 0f
-            for (v in rawVec) norm += v * v
+            for (v in out) norm += v * v
             norm = sqrt(norm).coerceAtLeast(1e-6f)
-            for (i in rawVec.indices) rawVec[i] /= norm
-            rawVec
+            for (i in out.indices) out[i] /= norm
+            out
         }
-
-    fun verifySpeaker(context: Context, liveVector: FloatArray?): Boolean {
-        val master = getMasterVector(context) ?: return true
-        if (liveVector == null || liveVector.size != master.size) return true
-        var dot = 0f
-        var nA = 0f
-        var nB = 0f
-        for (i in master.indices) {
-            dot += master[i] * liveVector[i]
-            nA += master[i] * master[i]
-            nB += liveVector[i] * liveVector[i]
-        }
-        val denom = sqrt(nA) * sqrt(nB)
-        if (denom <= 0f) return true
-        val similarity = dot / denom
-        return similarity >= 0.78f
-    }
 }

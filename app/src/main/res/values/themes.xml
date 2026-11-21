@@ -2,10 +2,7 @@
 <resources>
     <style name="Theme.CrimsonJarvis" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">#DC143C</item>
-        <item name="colorPrimaryVariant">#8B0000</item>
-        <item name="colorOnPrimary">#FFFFFF</item>
         <item name="android:windowBackground">#050103</item>
         <item name="android:statusBarColor">#050103</item>
-        <item name="android:navigationBarColor">#050103</item>
     </style>
 </resources>
