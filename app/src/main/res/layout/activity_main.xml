@@ -10,7 +10,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Header Card -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -38,7 +37,6 @@
                 android:layout_marginTop="4dp" />
         </LinearLayout>
 
-        <!-- Glowing Crimson Reactor Core -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -109,7 +107,6 @@ SPEAK"
             </LinearLayout>
         </LinearLayout>
 
-        <!-- System Permissions & Voiceprint Setup Card -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -163,7 +160,6 @@ SPEAK"
                 android:textColor="#FFD6DE" />
         </LinearLayout>
 
-        <!-- Optional Gemini AI Key Card -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

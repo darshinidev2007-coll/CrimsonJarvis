@@ -82,7 +82,6 @@ object VoiceAuthManager {
                         var energy = 0.0
                         for (s in buffer) energy += abs(s.toDouble())
                         if (energy / frameSize > 220.0) {
-                            // Extract 24-band spectral energy profile (timbre & pitch fingerprint)
                             for (b in 0 until BINS) {
                                 val freq = 120.0 + b * 155.0
                                 var real = 0.0

@@ -69,7 +69,6 @@ class JarvisBackgroundService : Service(), TextToSpeech.OnInitListener {
         )
         screenWake.acquire(10_000L)
 
-        // Bring Crimson JARVIS HUD over the lockscreen & dismiss swipe keyguard
         val wakeIntent = Intent(this, MainActivity::class.java).apply {
             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_SINGLE_TOP)
             putExtra("WAKE_BY_VOICE", true)

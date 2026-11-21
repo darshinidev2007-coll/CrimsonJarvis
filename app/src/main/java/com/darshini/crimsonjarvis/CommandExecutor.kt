@@ -34,7 +34,6 @@ object CommandExecutor {
 
         val lower = cleaned.lowercase()
 
-        // 1. SEND WHATSAPP MESSAGE: "send whatsapp message to amma saying I reached"
         val waSendMatch = Regex("(?:send\s+whatsapp|whatsapp).*?(?:to|message)\s+(.+?)\s+(?:saying|that|message)\s+(.+)").find(lower)
         if (waSendMatch != null) {
             val person = waSendMatch.groupValues[1].trim()
@@ -48,7 +47,6 @@ object CommandExecutor {
             return
         }
 
-        // 2. OPEN WHATSAPP & ENTER CHAT: "open whatsapp and go to amma's chat"
         val waChatMatch = Regex("whatsapp.*?(?:go to|chat with|message|open)\s+(.+)").find(lower)
         if (waChatMatch != null) {
             val person = waChatMatch.groupValues[1]
@@ -64,7 +62,6 @@ object CommandExecutor {
             return
         }
 
-        // 3. HARDWARE & SYSTEM CONTROLS (Torch, Camera, Volume, Alarm, Settings, Navigation)
         if (lower.contains("flashlight") || lower.contains("torch")) {
             val turnOn = !lower.contains("off")
             try {
@@ -141,7 +138,6 @@ object CommandExecutor {
             return
         }
 
-        // 4. YOUTUBE SEARCH & PLAY
         val ytMatch = Regex("youtube.*?(?:search|play|find|open)\s+(.+)").find(lower)
         if (ytMatch != null) {
             val query = ytMatch.groupValues[1].trim()
@@ -154,7 +150,6 @@ object CommandExecutor {
             return
         }
 
-        // 5. REAL ANDROID CONTACTS LOOKUP & DIRECT CALL: "call mom" / "call amma" / "call dad"
         val callMatch = Regex("^(?:call|dial|ring|phone)\s+(.+)").find(lower)
         if (callMatch != null) {
             val rawName = callMatch.groupValues[1]
@@ -187,7 +182,6 @@ object CommandExecutor {
             return
         }
 
-        // 6. OPEN ANY INSTALLED APP ON THE PHONE
         val openMatch = Regex("^(?:open|launch|start|go to)\s+(.+)").find(lower)
         if (openMatch != null) {
             var appQuery = openMatch.groupValues[1].trim()
@@ -208,7 +202,6 @@ object CommandExecutor {
             return
         }
 
-        // 7. GEMINI AI CONVERSATIONAL BRAIN (If API key saved, answers anything!)
         val apiKey = context.getSharedPreferences("crimson_jarvis_voice_prefs", Context.MODE_PRIVATE)
             .getString("gemini_api_key", "") ?: ""
 
@@ -264,7 +257,6 @@ object CommandExecutor {
         val packages = pm.getInstalledApplications(PackageManager.GET_META_DATA)
         val target = spokenAppName.lowercase().replace(" ", "")
 
-        // Exact or partial app label match across all installed Android apps
         for (appInfo in packages) {
             val label = pm.getApplicationLabel(appInfo).toString().lowercase().replace(" ", "")
             if (label == target || label.contains(target)) {
