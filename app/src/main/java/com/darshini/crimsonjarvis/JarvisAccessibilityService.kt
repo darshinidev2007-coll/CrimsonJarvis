@@ -10,9 +10,9 @@ import android.view.accessibility.AccessibilityNodeInfo
 class JarvisAccessibilityService : AccessibilityService() {
 
     companion object {
-        private var pendingTargetPackage: String? = null
-        private var pendingSearchQuery: String? = null
-        private var pendingMessageText: String? = null
+        internal var pendingTargetPackage: String? = null
+        internal var pendingSearchQuery: String? = null
+        internal var pendingMessageText: String? = null
         private var stage = 0
 
         fun prepareAction(pkg: String, contactQuery: String, messageText: String?) {
